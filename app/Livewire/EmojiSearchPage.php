@@ -22,11 +22,37 @@ class EmojiSearchPage extends Component
 
     public function updatedSearch(FindEmojisQuery $emojisQuery): void
     {
+        $this->search = trim($this->search);
         $this->emojis = $emojisQuery->query($this->search ?? '');
     }
 
     public function render()
     {
-        return view('livewire.emoji-search-page');
+        return view('livewire.emoji-search-page', [
+            'exampleKeywords' => $this->getExampleKeywords(),
+        ]);
+    }
+
+    private function getExampleKeywords(): array
+    {
+        return [
+            'happy',
+            'sad',
+            'angry',
+            'excited',
+            'nervous',
+            'surprised',
+            'scared',
+            'confused',
+            'tired',
+            'hungry',
+            'thirsty',
+            'sleepy',
+            'bored',
+            'relaxed',
+            'energized',
+            'confident',
+            'proud',
+        ];
     }
 }
