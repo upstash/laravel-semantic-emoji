@@ -12,7 +12,9 @@
         "php": "^8.2",
         "cerbero/json-parser": "^1.1",
         "laravel/framework": "^11.31",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5",
         "upstash/vector-laravel": "^0.2.0"
     },
     "require-dev": {
