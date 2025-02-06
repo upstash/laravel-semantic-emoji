@@ -47,16 +47,13 @@ class SeedEmojiDataCommand extends Command
 
         // map the collection to a DataUpsert object
         $collection = $collection->map(fn (array $data) => new DataUpsert(
-            id: $data['id'],
+            id: trim($data['id']),
             data: $data['data'],
             metadata: $data['metadata'],
         ));
 
-        // break the collection into chunks of 200 items
-        $collection = $collection->chunk(200);
-
-        // upsert the data into the vector index
-        $collection->each(function (Collection $collection) {
+        // upsert the data into the vector index in chunks of 500
+        $collection->chunk(500)->each(function (Collection $collection) {
             Vector::upsertDataMany($collection->toArray());
         });
     }
