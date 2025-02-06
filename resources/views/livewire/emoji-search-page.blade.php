@@ -17,6 +17,7 @@
     <div class="grid grid-cols-3 gap-6">
         @foreach($emojis as $emoji)
             <button
+                wire:key="{{ $emoji }}"
                 x-data="{ copyText: '{{ $emoji }}', copied: false }"
                 x-on:click="navigator.clipboard.writeText(copyText); copied = true; setTimeout(() => copied = false, 2000);"
                 title="Copy {{ $emoji }} to clipboard"
