@@ -35,7 +35,7 @@ class EmojiController extends Controller
         }
 
         $emojis = [];
-        $results = Vector::rangeIterator(new VectorRange(limit: 200, includeMetadata: true));
+        $results = Vector::rangeIterator(new VectorRange(limit: 500, includeMetadata: true));
 
         foreach ($results as $result) {
             $emoji = $result->metadata['emoji'];
